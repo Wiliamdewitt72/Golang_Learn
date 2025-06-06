@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-
+	// Una estructura es un objeto de datos que tiene diferentes campos. Es como una clase, pero sin métodos. Solamente se usa para agrupar datos relacionados.
 	// Estructura de datos en Go. (Forma 1)
 	// En general, se usa está forma paqra crear registros.
 	estructura := Persona{
@@ -21,7 +21,7 @@ func main() {
 	fmt.Println(estructura.Correo)          // Imprime el dato guardado en la estructura, en el campo Correo.
 
 	// Estructura de datos en Go. (Forma 2)
-	// En general, se usa para modificar registros.
+	// En general, esta forma se usa para modificar registros.
 	p := new(Persona)              // Se crea un puntero a la estructura.
 	fmt.Println(reflect.TypeOf(p)) // Imprime el tipo de la estructura.
 
@@ -35,11 +35,25 @@ func main() {
 
 }
 
-// Lo más recomendable es usar el nombre de la estructura en mayúscula, para que sea exportable y se pueda usar en otros paquetes.
+// Lo más recomendable es usar el nombre de la estructura en mayúscula, para que sea exportable (es decir, publica) y se pueda usar en otros paquetes. Cuando es minuscula, es privada y solo se puede usar en el mismo paquete.
 
 type Persona struct {
 	Id     int
 	Nombre string
 	Correo string
 	Edad   int
+}
+type Categoria struct {
+	Id     int
+	Nombre string
+	Slug   string
+	// También pueden haber campos privados si se ponen en minúscula.
+}
+
+type Producto struct {
+	Id        int
+	Nombre    string
+	Slug      string
+	Precio    int
+	Categoria Categoria // Se puede usar una estructura dentro de otra estructura.
 }
